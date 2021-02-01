@@ -1,6 +1,8 @@
 import { GetStaticProps } from 'next';
 import { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { BlogEntry, loadBlogEntries } from '../contentful/loadBlogEntries';
+import styles from './imprint.module.scss';
 
 interface Props {
     blogEntries: BlogEntry[];
@@ -11,16 +13,26 @@ const Entry = ({ entry }: { entry: BlogEntry }) => {
     const [languages, setLanguages] = useState('');
     useEffect(() => {
         setLanguages(navigator.languages.join(','));
-    }, []);
-    useEffect(() => {
+
         const handleScroll = () => setScrollY(window?.scrollY);
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const transformImageUrl = (url: string) =>
+        `https:${url}?w=500&fm=jpg&fl=progressive`;
+
     return (
-        <div>
-            <div>{entry.title}</div>
-            <div>{languages}</div>
+        <div className={styles.content}>
+            <h2>{entry.title}</h2>
+            {entry.heroImage && (
+                <img src={transformImageUrl(entry.heroImage.fields.file.url)} />
+            )}
+            <div>
+                <ReactMarkdown transformImageUri={transformImageUrl}>
+                    {entry.body}
+                </ReactMarkdown>
+            </div>
             <div>{scrollY}</div>
         </div>
     );
