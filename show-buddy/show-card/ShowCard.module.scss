@@ -1,0 +1,38 @@
+.showImage {
+    object-fit: cover;
+    max-height: 115px;
+}
+
+.firstAirDate {
+    word-wrap: none;
+}
+
+.suggestion {
+    height: 100%;
+    max-width: 300px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 4px 4px 10px #666666;
+    }
+
+    .title {
+        color: #363636 !important;
+    }
+
+    .subtitle {
+        color: #686868 !important;
+    }
+}
+
+.showDescription {
+    // max-height: 200px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    visibility: visible;
+    text-align: left;
+}

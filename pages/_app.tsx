@@ -1,4 +1,6 @@
 import '../styles/globals.css';
+import 'bootstrap/dist/css/bootstrap.css';
+
 import { AppProps, NextWebVitalsMetric } from 'next/app';
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {

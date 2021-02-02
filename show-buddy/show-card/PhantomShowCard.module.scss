@@ -1,0 +1,11 @@
+.phantomCard {
+    overflow: hidden;
+    figure {
+        overflow: hidden;
+    }
+
+    img,
+    p {
+        filter: blur(3px);
+    }
+}
