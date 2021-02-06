@@ -165,7 +165,6 @@ export const loadEpisodes = () =>
 
 export const getShowPoster = (show: TvShow, size = 300) => {
     const imagePath = show.backdrop_path || show.poster_path;
-    console.log(imagePath);
     return imagePath
         ? `http://image.tmdb.org/t/p/w${size}${imagePath}`
         : '/dummy.jpg';

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { fetchShows } from '../show-buddy/plex-api';
-import { ShowFilterContext } from '../show-buddy/show-api/ShowFilterContext';
-import { ShowSearch } from '../show-buddy/show-search/ShowSearch';
-import styles from './ShowBuddy.module.scss';
+import { fetchShows } from '../../show-buddy/plex-api';
+import { ShowFilterContext } from '../../show-buddy/show-api/ShowFilterContext';
+import { ShowSearch } from '../../show-buddy/show-search/ShowSearch';
+import styles from './index.module.scss';
 
 const ShowBuddy: React.FC = (props) => {
     const [plexShows, setPlexShows] = useState([] as string[]);
