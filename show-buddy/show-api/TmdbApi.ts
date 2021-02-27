@@ -64,8 +64,6 @@ export const discoverShowsByGenres = (
         switchMap((res) => res.json()),
         map((json) => json.results as ShowSearchResult[]),
         toArray(),
-        // tap(show => console.log(show.map(s => s.name)))
-        // tap(x => console.log(JSON.stringify(x.map(y => y.map(z => z.name))))),
         map((shows) => shows.flat()),
         map((shows) =>
             shows.filter(

@@ -1,21 +1,19 @@
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { Season, ShowDto } from './show-api/ShowApi';
 import ShowCard from './show-card/ShowCard';
 import styles from './ShowDetails.module.scss';
-import { useFetchShow } from './useFetchShowAndSeasons';
 import { useShowRecommendations } from './useShowRecommendations';
 
 const ShowDetails: React.FC<{
     showId: number;
+    show: ShowDto;
+    seasons: Season[];
     plexShows: string[];
-}> = (props) => {
-    const { show, seasons, isShowInPlex } = useFetchShow(
-        props.showId,
-        props.plexShows
-    );
-
-    const showRecommendations = useShowRecommendations(show, props.plexShows);
+    isShowInPlex: boolean;
+}> = ({ show, seasons, plexShows, isShowInPlex }) => {
+    const showRecommendations = useShowRecommendations(show, plexShows);
     const router = useRouter();
 
     return (
