@@ -1,41 +1,39 @@
+import cn from 'classnames';
 import React from 'react';
-import baseStyles from './ShowCard.module.scss';
+import { Card } from 'react-bootstrap';
+import { aTvShow } from '../../test-data/aTvShow';
 import styles from './PhantomShowCard.module.scss';
+import baseStyles from './ShowCard.module.scss';
 
-const PhantomShowCard: React.FC = (props) => (
-    <div className={`suggestion card ${styles.phantomCard}`}>
-        <div className="card-image">
-            <figure className="image is-16by9">
-                <img
-                    className={baseStyles.showImage}
-                    src="/dummy.jpg"
-                    alt="Placeholder loading"
-                />
-            </figure>
-        </div>
-        <div className="card-content">
-            <div className="media">
-                <div className="media-content">
-                    <p className="title is-4">Lost Girl</p>
-                    <div className="level">
-                        <p className="level-left is-6">2000 </p>
-                        <p className="level-right">7.8</p>
-                    </div>
+const show = aTvShow();
+
+export const PhantomShowCard: React.FC = (props) => (
+    <Card className={cn(baseStyles.card, styles.phantomCard)}>
+        <Card.Img
+            src="/dummy.jpg"
+            variant={'top'}
+            className={styles.showImage}
+        ></Card.Img>
+        <Card.Body>
+            <Card.Title>{show.name}</Card.Title>
+            <div className="row">
+                <div className="col-6">
+                    {show.first_air_date && (
+                        <time
+                            className={styles.firstAirDate}
+                            dateTime={show.first_air_date}
+                        >
+                            {new Date(show.first_air_date).getFullYear()}
+                        </time>
+                    )}
                 </div>
+                <p className="col-6">{show.vote_average}</p>
             </div>
-
-            <div className="content">
-                <p className="show-description">
-                    Lost Girl focuses on the gorgeous and charismatic Bo, a
-                    supernatural being called a succubus who feeds on the energy
-                    of humans, sometimes with fatal results. Refusing to embrace
-                    her supernatural clan and its rigid hierarchy, Bo is a
-                    renegade who takes up the fight for the underdog while
-                    searching for the truth about her own mysterious origins.
-                </p>
-            </div>
-        </div>
-    </div>
+            <Card.Text className={styles.showDescription}>
+                {show.overview}
+            </Card.Text>
+        </Card.Body>
+    </Card>
 );
 
 export default React.memo(PhantomShowCard);

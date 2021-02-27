@@ -13,7 +13,7 @@ const ShowCard: React.FC<{
     const showApi = useContext(ShowApiContext);
 
     return (
-        <Card className={styles.suggestion} onClick={() => props.showClicked()}>
+        <Card className={styles.card} onClick={() => props.showClicked()}>
             {show && (
                 <React.Fragment>
                     <Card.Img

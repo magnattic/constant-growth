@@ -1,8 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { of } from 'rxjs';
-import { first, tap } from 'rxjs/operators';
 import { fetchShows } from '../../show-buddy/plex-api';
 import { Season, ShowDto } from '../../show-buddy/show-api/ShowApi';
 import { ShowFilterContext } from '../../show-buddy/show-api/ShowFilterContext';
